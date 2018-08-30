@@ -40,6 +40,11 @@ class FirstScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           const SliverAppBar(
+            leading: Icon(Icons.home), actions: <Widget>[
+              IconButton(
+                  icon: Icon(Icons.map),
+                  onPressed: null)
+          ],
             pinned: true,
             expandedHeight: 100.0,
             flexibleSpace: FlexibleSpaceBar(
