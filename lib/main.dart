@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
         // counter didn't reset back to zero; the application is not restarted.
         primarySwatch: Colors.deepPurple,
+        accentColor: Colors.deepPurple[200]
       ),
       initialRoute: '/',
       routes: {
@@ -42,10 +43,10 @@ class FirstScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
       children: <Widget> [
-    IconButton(icon: Icon(Icons.home), onPressed: null),
-    IconButton(icon: Icon(Icons.home), onPressed: null),
-    IconButton(icon: Icon(Icons.home), onPressed: null),
-    IconButton(icon: Icon(Icons.home), onPressed: null),
+    IconButton(icon: Icon(Icons.home), disabledColor: Theme.of(context).accentColor, onPressed: null),
+    IconButton(icon: Icon(Icons.chat_bubble), disabledColor: Theme.of(context).accentColor, onPressed: null),
+    IconButton(icon: Icon(Icons.info), disabledColor: Theme.of(context).accentColor,onPressed: null),
+    IconButton(icon: Icon(Icons.help), disabledColor: Theme.of(context).accentColor, onPressed: null),
       ],
     );
 
