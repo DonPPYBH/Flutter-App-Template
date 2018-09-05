@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_template/util/settings.dart';
 
 void main() => runApp(new MyApp());
 
@@ -7,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Flutter Demo',
+      title: Constants.APPLICATION_NAME,
       theme: new ThemeData(
         // This is the theme of your application.
         //
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         // "hot reload" (press "r" in the console where you ran "flutter run",
         // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
         // counter didn't reset back to zero; the application is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
       ),
       initialRoute: '/',
       routes: {
@@ -35,43 +36,39 @@ class FirstScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     // TODO: implement build
+    var bottomAppBarContents = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.max,
+      children: <Widget> [
+    IconButton(icon: Icon(Icons.home), onPressed: null),
+    IconButton(icon: Icon(Icons.home), onPressed: null),
+    IconButton(icon: Icon(Icons.home), onPressed: null),
+    IconButton(icon: Icon(Icons.home), onPressed: null),
+      ],
+    );
+
     return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          const SliverAppBar(
-            leading: Icon(Icons.home), actions: <Widget>[
-              IconButton(
-                  icon: Icon(Icons.map),
-                  onPressed: null)
-          ],
-            pinned: true,
-            expandedHeight: 100.0,
-            flexibleSpace: FlexibleSpaceBar(
-              title: const Text('APP  NAME'),
-              centerTitle: true,
-            ),
-          ),
-          SliverGrid(
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200.0,
-                mainAxisSpacing: 10.0,
-                crossAxisSpacing: 10.0,
-                childAspectRatio: 4.0
-            ),
-            delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  return Container(
-                    alignment: Alignment.center,
-                    color: Colors.grey[300],
-                    child: Text('grid item $index'),
-                  );
-              }
-            ),
-          )
-        ],
+      //AppBar
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(Constants.APPLICATION_NAME),
       ),
 
+      //Floating action Button
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          onPressed: null
+      ),
+
+      //Bottom Bar
+      bottomNavigationBar: BottomAppBar(
+        color: Theme.of(context).primaryColor,
+        child: bottomAppBarContents,
+        hasNotch: true,
+      ),
     );
   }
 
@@ -93,6 +90,8 @@ class FirstScreen extends StatelessWidget {
 //
 //}
 //
+
+
 //class MyHomePage extends StatefulWidget {
 //  MyHomePage({Key key, this.title}) : super(key: key);
 
