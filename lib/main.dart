@@ -34,7 +34,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class FirstScreen extends StatelessWidget {
+class FirstScreen extends StatefulWidget {
+  _FirstScreenState createState() => new _FirstScreenState();
+}
+
+class _FirstScreenState extends State<FirstScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -68,12 +72,41 @@ class FirstScreen extends StatelessWidget {
         disabledColor: Theme.of(context).accentColor,
         onPressed: () {
           Navigator.pushNamed(context, '/help');
-        }    ),
+        }
+        ),
       ],
     );
 
 
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+                child: Text('Profile'),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColorLight
+                ),
+            ),
+            ListTile(
+              title: Text('Testing again'),
+              onTap: () {
+                //@TODO
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('and again lol'),
+              onTap: () {
+                //@TODO
+                Navigator.pop(context);
+                
+              },
+            )
+          ],
+        ),
+      ),
       //AppBar
       appBar: AppBar(
         centerTitle: true,
@@ -84,7 +117,11 @@ class FirstScreen extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.contacts),
-          onPressed: null
+          onPressed: () {
+            setState(() {
+              Scaffold.of(context).hasDrawer;
+            });
+          }
       ),
 
       //Bottom Bar
@@ -97,6 +134,7 @@ class FirstScreen extends StatelessWidget {
   }
 
 }
+
 
 
 class SplashScreen extends StatefulWidget {
