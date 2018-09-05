@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => FirstScreen(),
+        '/info': (context) => InfoScreen(),
         //'/first': (context) => FirstScreen(),
 //        '/splash': (context) => SplashScreen(),
 //        '/links': (context) => LinkScreen(),
@@ -38,17 +39,39 @@ class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    // TODO: implement build
     var bottomAppBarContents = Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
       children: <Widget> [
-    IconButton(icon: Icon(Icons.home), disabledColor: Theme.of(context).accentColor, onPressed: null),
-    IconButton(icon: Icon(Icons.chat_bubble), disabledColor: Theme.of(context).accentColor, onPressed: null),
-    IconButton(icon: Icon(Icons.info), disabledColor: Theme.of(context).accentColor,onPressed: null),
-    IconButton(icon: Icon(Icons.help), disabledColor: Theme.of(context).accentColor, onPressed: null),
+    IconButton(
+        icon: Icon(Icons.home),
+        disabledColor: Theme.of(context).accentColor,
+        onPressed: () {
+          Navigator.pushNamed(context, '/');
+        }
+    ),
+    IconButton(
+        icon: Icon(Icons.chat_bubble),
+        disabledColor: Theme.of(context).accentColor,
+        onPressed: () {
+          Navigator.pushNamed(context, '/chat');
+        }
+    ),
+    IconButton(
+        icon: Icon(Icons.info),
+        disabledColor: Theme.of(context).accentColor,
+        onPressed: () {
+          Navigator.pushNamed(context, '/info');
+        }    ),
+    IconButton(
+        icon: Icon(Icons.help),
+        disabledColor: Theme.of(context).accentColor,
+        onPressed: () {
+          Navigator.pushNamed(context, '/help');
+        }    ),
       ],
     );
+
 
     return Scaffold(
       //AppBar
@@ -60,7 +83,7 @@ class FirstScreen extends StatelessWidget {
       //Floating action Button
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
+          child: const Icon(Icons.contacts),
           onPressed: null
       ),
 
@@ -74,23 +97,25 @@ class FirstScreen extends StatelessWidget {
   }
 
 }
-//
-//class SplashScreen extends StatefulWidget {
-//  @override
-//  State<StatefulWidget> createState() {
-//    // TODO: implement createState
-//  }
-//
-//}
-//
-//class LinkScreen extends StatefulWidget {
-//  @override
-//  State<StatefulWidget> createState() {
-//    // TODO: implement createState
-//  }
-//
-//}
-//
+
+
+class SplashScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+  }
+
+}
+
+
+class InfoScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+  }
+
+}
+
 
 
 //class MyHomePage extends StatefulWidget {
