@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
         // counter didn't reset back to zero; the application is not restarted.
         primarySwatch: Colors.deepPurple,
-        accentColor: Colors.deepPurple[200]
+        accentColor: Colors.deepPurple[200],
       ),
       initialRoute: '/',
       routes: {
@@ -77,34 +77,40 @@ class _FirstScreenState extends State<FirstScreen> {
       ],
     );
 
+    var drawerContents = <Widget> [
+      DrawerHeader(
+        child: Text('Profile'),
+        decoration: BoxDecoration(
+            color: Theme.of(context).primaryColorLight
+        ),
+      ),
+      ListTile(
+        title: Text('Testing again'),
+        onTap: () {
+          //@TODO
+          Navigator.pop(context);
+        },
+      ),
+      ListTile(
+        title: Text('and again lol'),
+        onTap: () {
+          //@TODO
+          Navigator.pop(context);
+        },
+      ),
+      AboutListTile(
+        applicationIcon: Icon(Icons.home),
+        applicationVersion: Constants.APPLICATION_VERSION,
+        icon: Icon(Icons.info),
+      )
+    ];
+
 
     return Scaffold(
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-                child: Text('Profile'),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColorLight
-                ),
-            ),
-            ListTile(
-              title: Text('Testing again'),
-              onTap: () {
-                //@TODO
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('and again lol'),
-              onTap: () {
-                //@TODO
-                Navigator.pop(context);
-                
-              },
-            )
-          ],
+          children: drawerContents,
         ),
       ),
       //AppBar
