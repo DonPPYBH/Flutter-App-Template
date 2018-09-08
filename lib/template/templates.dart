@@ -1,5 +1,5 @@
 ///*
-//  A list of templates for certain widgets, will try to categoris as much class
+//  A list of templates for certain widgets, will try to categorise as much as
 //  possible.
 // */
 //
