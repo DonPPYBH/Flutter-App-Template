@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_template/util/customcolours.dart';
 import 'package:flutter_app_template/util/settings.dart';
 
 void main() => runApp(new MyApp());
@@ -18,8 +19,9 @@ class MyApp extends StatelessWidget {
         // "hot reload" (press "r" in the console where you ran "flutter run",
         // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
         // counter didn't reset back to zero; the application is not restarted.
-        primarySwatch: Colors.deepPurple,
-        accentColor: Colors.deepPurple[200],
+        //primarySwatch: Colors.cyan,
+        primaryColor: pColor50,
+        accentColor: sColor50,
       ),
       initialRoute: '/',
       routes: {
@@ -42,34 +44,34 @@ class _FirstScreenState extends State<FirstScreen> {
 
   @override
   Widget build(BuildContext context) {
-
+    
     var bottomAppBarContents = Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
       children: <Widget> [
     IconButton(
         icon: Icon(Icons.home),
-        disabledColor: Theme.of(context).accentColor,
+        color: sColor300,
         onPressed: () {
           Navigator.pushNamed(context, '/');
         }
     ),
     IconButton(
         icon: Icon(Icons.chat_bubble),
-        disabledColor: Theme.of(context).accentColor,
+        color: sColor300,
         onPressed: () {
           Navigator.pushNamed(context, '/chat');
         }
     ),
     IconButton(
         icon: Icon(Icons.info),
-        disabledColor: Theme.of(context).accentColor,
+        color: sColor300,
         onPressed: () {
           Navigator.pushNamed(context, '/info');
         }    ),
     IconButton(
         icon: Icon(Icons.help),
-        disabledColor: Theme.of(context).accentColor,
+        color: sColor300,
         onPressed: () {
           Navigator.pushNamed(context, '/help');
         }
@@ -81,7 +83,7 @@ class _FirstScreenState extends State<FirstScreen> {
       DrawerHeader(
         child: Text('Profile'),
         decoration: BoxDecoration(
-            color: Theme.of(context).primaryColorLight
+            color: Theme.of(context).accentColor
         ),
       ),
       ListTile(
@@ -101,7 +103,7 @@ class _FirstScreenState extends State<FirstScreen> {
       AboutListTile(
         applicationIcon: Icon(Icons.home),
         applicationVersion: Constants.APPLICATION_VERSION,
-        icon: Icon(Icons.info),
+        icon: Icon(Icons.ac_unit),
       )
     ];
 
@@ -125,7 +127,21 @@ class _FirstScreenState extends State<FirstScreen> {
           child: const Icon(Icons.contacts),
           onPressed: () {
             setState(() {
-              Scaffold.of(context).hasDrawer;
+              //@TODO
+              showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        ListTile(
+                          leading: Icon(Icons.beach_access),
+                          title: Text('Beach'),
+                        )
+                      ],
+                    );
+                  }
+              );
             });
           }
       ),
@@ -135,6 +151,29 @@ class _FirstScreenState extends State<FirstScreen> {
         color: Theme.of(context).primaryColor,
         child: bottomAppBarContents,
         hasNotch: true,
+      ),
+      body: Container(
+        color: backgroundColor,
+        padding: EdgeInsets.only(left: 48.0, right: 48.0, top: 16.0),
+        child: Column(
+          children: <Widget>[
+            Text(
+              'Hello',
+              style: TextStyle(
+                color: sColor300,
+                fontSize: 36.0,
+                fontWeight: FontWeight.w600
+              ),
+            ),
+            Text(
+                'sjhcdsjchsbcjhajdhsdfjhsdfjshbfdsjfbdsjfbsjdbsjdhfsjdfhdsjfhsdsjbdjfhsdjhdfg',
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Theme.of(context).accentColor
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
